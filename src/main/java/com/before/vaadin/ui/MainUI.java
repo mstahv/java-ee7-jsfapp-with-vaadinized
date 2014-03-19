@@ -33,7 +33,7 @@ public class MainUI extends UI {
 
         Navigator navigator = new Navigator(this, navigatorLayout);
         navigator.addProvider(viewProvider);
-        navigator.setErrorView(MainView.class);
+        navigator.setErrorView(CustomerView.class);
 
         setContent(navigatorLayout);
     }    
