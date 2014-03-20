@@ -14,7 +14,6 @@ import com.vaadin.ui.Notification;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.vaadin.maddon.fields.MTable;
-import org.vaadin.maddon.fields.MValueChangeEvent;
 import org.vaadin.maddon.label.Header;
 import org.vaadin.maddon.layouts.MVerticalLayout;
 
@@ -35,12 +34,13 @@ public class CustomerView extends MVerticalLayout implements View {
 
     @PostConstruct
     public void initComponent() {
-        table.addMValueChangeListener((MValueChangeEvent<Customer> event) -> {
-            form.setEntity(event.getValue());
-        });
-        listEntities();
         form.setResetHandler(this::reset);
         form.setSavedHandler(this::save);
+
+        table.addMValueChangeListener(e -> {
+            form.setEntity(e.getValue());
+        });
+        listEntities();
         addComponents(
                 new Header("Customer listing"),
                 table, 

@@ -23,18 +23,19 @@ public class MainUI extends UI {
     
     @Inject
     private CDIViewProvider viewProvider;
+    
+    @Inject
+    ViewMenu menu;
 
     @Override
     public void init(VaadinRequest request) {
-        setSizeFull();
-
-        VerticalLayout navigatorLayout = new VerticalLayout();
-        navigatorLayout.setSizeFull();
-
-        Navigator navigator = new Navigator(this, navigatorLayout);
+        
+        VerticalLayout mainarea = new VerticalLayout();
+        
+        Navigator navigator = new Navigator(this, mainarea);
         navigator.addProvider(viewProvider);
         navigator.setErrorView(CustomerView.class);
-
-        setContent(navigatorLayout);
+        
+        setContent(new VerticalLayout(menu.getBasicMenu(), mainarea));
     }    
 }

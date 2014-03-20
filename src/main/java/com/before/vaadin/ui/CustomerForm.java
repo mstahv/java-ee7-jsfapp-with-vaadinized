@@ -5,6 +5,7 @@
  */
 package com.before.vaadin.ui;
 
+import org.vaadin.maddon.form.AbstractForm;
 import com.before.vaadin.Customer;
 import com.before.vaadin.MicroMarket;
 import com.before.vaadin.ejb.MicroMarketFacade;
@@ -26,7 +27,7 @@ public class CustomerForm extends AbstractForm<Customer> {
 
     @Inject
     MicroMarketFacade microMarketfacade;
-
+    
     MTextField name = new MTextField("Name");
     MTextField email = new MTextField("Email");
     MTextField fax = new MTextField("Fax");
